@@ -1,17 +1,16 @@
 <!-- 01_php-intro/index.php -->
 <!--
-    Disciplina : Desenvolvimento Web II (DWII)
-    Aula       : 03 - Arquitetura Web e Introdução ao PHP
-    Autor      : Gabriel Borba de Oliveira
-    Data:      : 02/03/2026
-    Repositório: https://github.com/Gabriel-Borba-Oliveira/2026-DWII
+  Disciplina : Desenvolvimento Web II (DWII)
+  Aula       : 03 - PHP Intro
+  Autor      : Gabriel Borba de Oliveira
+  Data       : 05/03/202
 -->
 <?php
 // Variáveis PHP - serão usadas no HTML abaixo
 $nome = "Gabriel Borba de Oliveira";
-$profissao = "Estudante de Tecnologia";
+$profissao = "Técnico em Informática em formação";
 $curso = "Técnico em Informática - IFPR";
-$pagina_atual = "inicio";
+$pagina_atual = "inicio"
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

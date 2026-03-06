@@ -1,4 +1,3 @@
-<!-- 01_php-intro/sobre.php -->
 <!--
   Disciplina : Desenvolvimento Web II (DWII)
   Aula       : 03 - PHP Intro
@@ -6,15 +5,15 @@
   Data       : 05/03/202
 -->
 <?php
-$nome = "Gabriel Borba de Oliveira";
-$pagina_atual = "sobre";
+$nome = "Gabriel Borba de Oliveira"; 
+$pagina_atual = "projetos";
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - <?php echo $nome; ?></title>
+    <title>Projetos - <?php echo $nome; ?></title>
 </head>
 <body>
     <body style="font-family: Arial, sans-serif; margin: 0; background: #f3f4f6;">
@@ -22,8 +21,15 @@ $pagina_atual = "sobre";
     <?php include 'includes/cabecalho.php'; ?>
 
     <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
-        <h1 style="color: #3b579d;">👤 Sobre mim</h1>
-        <p> (Escrever mais) Sou aluno do Instituto Federal do Paraná (IFPR) em Ponta Grossa, estou cursando T.I e estou atualmente no 3º ano. Escolhi fazer esse curso e até agora estou gostando, após sair do IF pretendo permancer nessa área de tecnologia e cursar engenharia de softaware na UEPG, entretanto também tenho curisiodades em carreiras diversas, ainda não consegui decidir realmente o que quero.</p>
+        <h1 style="color: #3b579d;">Projetos</h1>
+        <h2>Jogo da Velha em Python</h2>
+        <p>Projeto criado no 1º ano na matéria de lógica de programação.</p>
+
+        <h2>Portfólio de Apresentação</h2>
+        <p>Primeiro projeto criado em DWII usando HTML e CSS.</p>
+
+        <h2>Site de Clima - Gostaria de fazer futuramente</h2>
+        <p>Esse projeto pegaria os dados de uma API pública para exibir os dados do clima de determinada cidade.</p>
         <a href="index.php"
             style="color: #3b579d: font-weight: bold;"> Voltar ao início</a>
     </div> 
