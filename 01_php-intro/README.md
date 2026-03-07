@@ -5,10 +5,10 @@ Gerado dinamicamente com variáveis, includes e condicionais.
 
 ## Como executar
 
-
+```
 cd ~/workspaces/2026-DWII
 php -S localhost:8001 -t 01_php-intro/
-
+```
 
 Acesse: http://localhost:8001
 
