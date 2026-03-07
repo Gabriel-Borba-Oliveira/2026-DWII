@@ -1,4 +1,4 @@
-<!-- incluides/cabealho.php --> 
+<!-- includes/cabecalho.php --> 
 <!--
   Disciplina : Desenvolvimento Web II (DWII)
   Aula       : 03 - PHP Intro
