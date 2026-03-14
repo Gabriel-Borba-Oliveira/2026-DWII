@@ -23,21 +23,33 @@ $titulo_pagina = "Contato";
 
 
 $nome_visitante = '';
+$email = '';
+$assunto = '';
 $mensagem = '';
 $erros = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nome_visitante = trim($_POST['nome_visitante'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $assunto = $_POST['assunto'] ?? '';
     $mensagem = trim($_POST['mensagem'] ?? '');
 
     if (empty($nome_visitante)) {
         $erros[] = 'O campo Nome é obrigatório.';
 }
+
+    if (empty($email)) {
+        $erros[] = 'O campo E-mail é obrigatório.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erros[] = 'Informe um e-mail válido';
+    }
     if (empty($mensagem)) {
         $erros[] = 'O campo Mensagem é obrigatório.';
     } elseif (strlen($mensagem) < 10) {
-        $erros[] = 'A mensagem deve ter pelo menos 10 caracteres.';
+        $erros[] = 'A mensagem deve ter pelo menos 10.';
+    } elseif (strlen($mensagem) > 500) {
+        $erros[] = 'A mensagem não pode ultrapassar 500 caracteres.';
     }
 
     if (empty($erros) && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -77,25 +89,28 @@ $mensagem = $_POST['mensagem'] ?? '';
 
 
             <label>Seu nome:</label>
-            <input type="text" name="nome_visitante">
+            <input type="text" name="nome_visitante" value="<?php echo htmlspecialchars($nome_visitante); ?>">
 
+            <label>Seu e-mail:</label>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
 
             <label>Sua mensagem:</label>
-            <textarea name="mensagem" rows="4"></textarea>
+            <textarea name="mensagem" rows="4"><?php echo htmlspecialchars($mensagem); ?></textarea>
 
 
             <button type="submit">Enviar</button>
 
         </form>
-    </div>
+    
 
 <?php if (!empty($erros)): ?>
     <div class="alerta-erro">
         <h3>Corrija os erros:</h3>
         <?php foreach ($erros as $erro): ?>
-            <p style="margin: 4px 0;">❌ <?php echo htmlspecialchars($erro); ?></p>
+            <p class="erro-item">❌ <?php echo htmlspecialchars($erro); ?></p>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
+    </div>
 
 <?php include '../includes/rodape.php'; ?>
