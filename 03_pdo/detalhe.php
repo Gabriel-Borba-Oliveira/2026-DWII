@@ -1,14 +1,26 @@
 <?php
 
+/*
+
+ ARQUIVO : 03_pdo/detalhe.php
+ Disciplina : Desenvolvimento Web II (2026-DWII)
+ Aula : 05 - PHP + MariaDB: persistência de dados via PDO
+ Autor : Gabriel Borba de Oliveira
+ Conceitos : catálogo com PDO e MariaDB, htmlspecialchars()
+
+*/
+
 $caminho_raiz = '../';
 
 require_once 'includes/conexao.php';
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$categoria_filtro = $_GET['categoria'] ?? '';
+$busca_filtro = $_GET['busca'] ?? '';
 
 if (!$id) {
 
-    header('Location: index.php');
+    header('Location: 404.php');
     exit;
 }
 
@@ -18,7 +30,7 @@ $tec = $stmt->fetch();
 
 if (!$tec) {
 
-    header('Location: index.php');
+    header('Location: 404.php');
     exit;
 }
 
@@ -35,7 +47,14 @@ $pagina_atual = "catalogo";
 <body>
     <div class="container">
 
-        <a href="index.php" style="color: #3b579d; font-weight: bold;"> <- Voltar ao catálogo</a>
+         <a href="index.php
+            <?php 
+                $params = [];
+                if ($categoria_filtro) $params[] = 'categoria=' . urlencode($categoria_filtro);
+                if ($busca_filtro) $params[] = 'busca=' . urlencode($busca_filtro);
+                echo $params ? '?' . implode('&', $params) : '';?>" style="color: #3b579d; font-weight: bold;">
+            ← Voltar ao catálogo
+        </a>
 
         <div class="card" style="margin-top: 20px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">

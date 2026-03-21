@@ -1,5 +1,13 @@
 <?php
 /*
+
+ ARQUIVO : 03_pdo/includes/conexao.php
+ Disciplina : Desenvolvimento Web II (2026-DWII)
+ Aula : 05 - PHP + MariaDB: persistência de dados via PDO
+ Autor : Gabriel Borba de Oliveira
+ Conceitos : catálogo com PDO e MariaDB, htmlspecialchars()
+
+
     includes/conexao.php
     Arquivo de conexão PDO - incluir em qualquer página que use o banco
 */
