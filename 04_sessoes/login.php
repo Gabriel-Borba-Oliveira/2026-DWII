@@ -9,10 +9,9 @@
 
 session_start();
 
-if (isset($_SESSION['usuario'])) {
-    header('Location: login.php');
-    exit;
-}
+require_once __DIR__ . '/includes/auth.php';
+redirecionar_se_logado(); // se já estiver logado, vai para painel.php
+
 
 $USUARIO_VALIDO = 'admin';
 $SENHA_VALIDA = 'dwii2026';
@@ -20,24 +19,46 @@ $SENHA_VALIDA = 'dwii2026';
 $erro = '';
 $login = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$ip = $_SERVER['REMOTE_ADDR'];
+if (!isset($_SESSION['tentativas'][$ip])) {
+    $_SESSION['tentativas'][$ip] = 0;
+}
+if (!isset($_SESSION['bloqueado_ate'][$ip])) {
+    $_SESSION['bloqueado_ate'][$ip] = 0;
+}
+
+$bloqueado = $_SESSION['bloqueado_ate'][$ip] > time();
+
+if ($bloqueado) {
+    $segundos_restantes = $_SESSION['bloqueado_ate'][$ip] - time();
+    $erro = "Muitas tentativas. Tente novamente em $segundos_restantes segundos.";
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$bloqueado) {
     $login = trim($_POST['usuario'] ?? '');
     $senha = trim($_POST['senha'] ?? '');
 
     if ($login === $USUARIO_VALIDO && $senha === $SENHA_VALIDA) {
+        $_SESSION['tentativas'][$ip] = 0;
+        $_SESSION['bloqueado_ate'][$ip] = 0;
         session_regenerate_id(true);
         $_SESSION['usuario'] = $login;
         $_SESSION['logado_em'] = date('d/m/Y \à\s H:i');
+        $_SESSION['flash'] = "Bem-vindo, $login!";
         header('Location: painel.php');
         exit;
     } else {
+        $_SESSION['tentativas'][$ip]++;
+        if ($_SESSION['tentativas'][$ip] >= 3) {
+            $_SESSION['bloqueado_ate'][$ip] = time() + 60;
+        }
         $erro = 'Usuário ou senha incorretos.';
     }
 }
 
 $titulo_pagina = 'Login - Área restrita';
 $caminho_raiz = '../';
-$pagina_atual = '';
+$pagina_atual = 'login';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

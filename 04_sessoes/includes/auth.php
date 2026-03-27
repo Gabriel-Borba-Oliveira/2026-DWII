@@ -7,6 +7,18 @@
  * Data : 23/03/2026
  */
 
+function redirecionar_se_logado(): void
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (isset($_SESSION['usuario'])) {
+        header('Location: painel.php');
+        exit;
+    }
+}
+
+
 function requer_login(): void
 {
     if (session_status() === PHP_SESSION_NONE) {

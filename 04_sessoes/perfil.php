@@ -2,24 +2,19 @@
 /**
  * Disciplina: Desenvolvimento Web II (DWII)
  * Aula : 06 - Autenticação com sessões e controle de acesso
- * Arquivo : 04_sessoes/painel.php
+ * Arquivo : 04_sessoes/perfil.php
  * Autor : Gabriel Borba de Oliveira
  */
 
 require_once __DIR__ . '/includes/auth.php';
 requer_login();
 
-if (isset($_SESSION['flash'])) {
-    echo '<div class="alerta-sucesso">' . htmlspecialchars($_SESSION['flash']) . '</div>';
-    $_SESSION['flash'] = null;
-}
-
 if (!isset($_SESSION['visitas'])) {
     $_SESSION['visitas'] = 0;
 }
 $_SESSION['visitas']++;
 
-$titulo_pagina = 'Painel - Área Restrita';
+$titulo_pagina = 'Perfil';
 $caminho_raiz = '../';
 $pagina_atual = 'login';
 ?>
@@ -32,8 +27,8 @@ $pagina_atual = 'login';
 
 <div class="container">
 
-    <div class="alerta-sucesso">
-        <h3> ✅  Você está autenticado!</h3>
+    <div class="card">
+        <h3>Perfil</h3>
         <p><strong>Usuário:</strong>
             <?php echo htmlspecialchars($_SESSION['usuario']); ?>
         </p>
@@ -45,17 +40,8 @@ $pagina_atual = 'login';
         </p>
     </div>
 
-    <div class="card">
-        <h3>📊 Painel de controle</h3>
-        <p>Este conteúdo só é visível para usuários autenticados.
-        </p>
-        <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD).</p>
-    </div>
-
     <p style="margin-top: 24px; text-align: center;">
-        <a href="logout.php" style="background: #cf1c21; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
-            🚪 Sair
-        </a>
+        <a href="painel.php" style="background: #3b579d; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none;">← Voltar ao Painel</a>
     </p>
 
 </div>
