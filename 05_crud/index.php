@@ -66,7 +66,7 @@ $pagina_atual = '';
 <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
         <h1 class="titulo-secao" style="margin: 0;">📁 Meus Projetos</h1>
-        <a href="cadastrar.php" class="btn-primario">+ Novo Projeto</a>
+        <a href="cadastrar.php" class="btn-primario">➕ Novo Projeto</a>
     </div>
 
 
