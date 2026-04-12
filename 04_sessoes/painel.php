@@ -47,7 +47,7 @@ $pagina_atual = 'login';
 
     <div class="card">
         <h3>📊 Painel de controle</h3>
-        <p>Este conteúdo só é visível para usuários autenticados.
+        <p>Este conteúdo so é visível para usuários autenticados.
         </p>
         <a href="../05_crud/index.php" class="btn-primario">
             📁 Gerenciar Projetos

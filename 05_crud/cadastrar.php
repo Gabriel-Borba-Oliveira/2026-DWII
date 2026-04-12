@@ -97,7 +97,7 @@ $pagina_atual = '';
             <label for="link_github">Link do GitHub <span style="color: #6b7280; font-weight: normal;">(opcional)</span></label>
             <input type="url" id="link_github" name="link_github" value="<?php echo htmlspecialchars($form['link_github']); ?>" placeholder="https://github.com/usuario/repositorio">
 
-            <label for="ano">Ano: <span style="color: #cf1c21;">*</span></label>
+            <label for="ano">Ano: <span style="color: #cf1c21;">**</span></label>
             <input type="number" id="ano" name="ano" value="<?php echo htmlspecialchars($form['ano']); ?>" min="2000" max="<?php echo date('Y') + 1; ?>">
 
             <button type="submit">A Salvar Projeto</button>
