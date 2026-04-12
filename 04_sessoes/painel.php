@@ -24,7 +24,7 @@ $caminho_raiz = '../';
 $pagina_atual = 'login';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
 </head>
@@ -49,7 +49,9 @@ $pagina_atual = 'login';
         <h3>📊 Painel de controle</h3>
         <p>Este conteúdo só é visível para usuários autenticados.
         </p>
-        <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD).</p>
+        <a href="../05_crud/index.php" class="btn-primario">
+            📁 Gerenciar Projetos
+        </a>
     </div>
 
     <p style="margin-top: 24px; text-align: center;">
