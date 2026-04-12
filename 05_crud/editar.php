@@ -25,7 +25,7 @@ if ($id <= 0) {
 
 $pdo = conectar();
 $stmt = $pdo->prepare('SELECT * FROM projetos WHERE id = :id');
-$stmt->execute([':id => $id']);
+$stmt->execute([':id' => $id]);
 $projeto = $stmt->fetch();
 
 if (!$projeto) {
