@@ -5,7 +5,7 @@
  * Arquivo : 05_crud/index.php
  * Autor : Gabriel Borba de Oliveira
  * Data : 03/04/2026
- * Descrição : Lista projetos com busca por nome e filtro por tecnologia (A1)
+ * Descrição : Lista projetos com busca por nome ou tecnologia (simplificada)
  */
 
 require_once __DIR__ . '/../04_sessoes/includes/auth.php';
@@ -15,34 +15,14 @@ require_once __DIR__ . '/includes/conexao.php';
 
 $pdo = conectar();
 
-
 $busca = trim($_GET['busca'] ?? '');
-$tecnologia = trim($_GET['tecnologia'] ?? '');
 
-$stmtTec = $pdo->query('SELECT tecnologias FROM projetos');
-$todasTecs = [];
-while ($row = $stmtTec->fetch()) {
-    $tecs = explode(',', $row['tecnologias']);
-    foreach ($tecs as $tec) {
-        $tecTrim = trim($tec);
-        if ($tecTrim !== '') {
-            $todasTecs[] = $tecTrim;
-        }
-    }
-}
-$todasTecs = array_unique($todasTecs);
-sort($todasTecs);
-
-$sql = 'SELECT * FROM projetos WHERE 1=1';
+$sql = 'SELECT * FROM projetos';
 $params = [];
 
 if ($busca !== '') {
-    $sql .= ' AND nome LIKE :termo';
+    $sql .= ' WHERE nome LIKE :termo OR tecnologias LIKE :termo';
     $params[':termo'] = '%' . $busca . '%';
-}
-if ($tecnologia !== '') {
-    $sql .= ' AND tecnologias LIKE :tec';
-    $params[':tec'] = '%' . $tecnologia . '%';
 }
 $sql .= ' ORDER BY criado_em DESC';
 
@@ -50,7 +30,11 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $projetos = $stmt->fetchAll();
 
+
 $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
+$editadoOk  = isset($_GET['editado']) && $_GET['editado'] === 'ok';
+$excluidoOk = isset($_GET['excluido']) && $_GET['excluido'] === 'ok';
+$erroMsg    = isset($_GET['erro']) ? $_GET['erro'] : '';
 
 $titulo_pagina = 'Meus Projetos - Portfólio';
 $caminho_raiz = '../';
@@ -69,30 +53,44 @@ $pagina_atual = '';
         <a href="cadastrar.php" class="btn-primario">➕ Novo Projeto</a>
     </div>
 
-
+    <!-- Formulário de busca simplificado (apenas um campo) -->
     <form method="get" action="index.php" style="margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <input type="text" name="busca" placeholder="Buscar por nome..." 
+        <input type="text" name="busca" placeholder="Buscar por nome ou tecnologia..." 
                value="<?php echo htmlspecialchars($busca); ?>" 
-               style="padding: 8px; width: 200px; border-radius: 4px; border: 1px solid #ccc;">
+               style="padding: 8px; width: 250px; border-radius: 4px; border: 1px solid #ccc;">
         
-        <select name="tecnologia" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
-            <option value="">Todas as tecnologias</option>
-            <?php foreach ($todasTecs as $tec): ?>
-                <option value="<?php echo htmlspecialchars($tec); ?>" <?php echo ($tecnologia === $tec) ? 'selected' : ''; ?>>
-                    <?php echo htmlspecialchars($tec); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-
         <button type="submit" class="btn-primario" style="background: #3b579d;">Filtrar</button>
-        <?php if ($busca !== '' || $tecnologia !== ''): ?>
-            <a href="index.php" class="btn-secundario">Limpar filtros</a>
+        <?php if ($busca !== ''): ?>
+            <a href="index.php" class="btn-secundario">Limpar filtro</a>
         <?php endif; ?>
     </form>
 
+    <!-- Alertas de feedback -->
     <?php if ($cadastroOk): ?>
         <div class="alerta-sucesso">
-            <p style="margin: 0;">✔ Projeto cadastrado com sucesso!</p>
+            <p style="margin: 0;">✅ Projeto cadastrado com sucesso!</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($editadoOk): ?>
+        <div class="alerta-sucesso">
+            <p style="margin: 0;">✏️ Projeto atualizado com sucesso!</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($excluidoOk): ?>
+        <div class="alerta-sucesso">
+            <p style="margin: 0;">🗑️ Projeto removido com sucesso.</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($erroMsg === 'nao_encontrado'): ?>
+        <div class="alerta-erro">
+            <p style="margin: 0;">⚠️ Projeto não encontrado. Ele pode já ter sido removido.</p>
+        </div>
+    <?php elseif ($erroMsg === 'id_invalido'): ?>
+        <div class="alerta-erro">
+            <p style="margin: 0;">⚠️ Requisição inválida.</p>
         </div>
     <?php endif; ?>
 
@@ -100,7 +98,7 @@ $pagina_atual = '';
         <div class="card" style="text-align: center; padding: 40px 20px; color: #6b7280;">
             <p style="font-size: 40px; margin: 0 0 12px;">🔍</p>
             <p style="font-size: 16px; margin: 0 0 16px;">
-                Nenhum projeto encontrado com os filtros aplicados.
+                Nenhum projeto encontrado <?php echo $busca ? 'com o termo "<strong>' . htmlspecialchars($busca) . '</strong>"' : 'cadastrado ainda'; ?>.
             </p>
             <a href="cadastrar.php" class="btn-primario">+ Cadastrar novo projeto</a>
         </div>
@@ -124,6 +122,12 @@ $pagina_atual = '';
                         <a href="<?php echo htmlspecialchars($projeto['link_github']); ?>" target="_blank" rel="noopener noreferrer" class="btn-secundario">🔗 Ver no GitHub</a>
                     <?php endif; ?>
                     <a href="detalhe.php?id=<?php echo $projeto['id']; ?>" class="btn-secundario" style="margin-left: 8px;">🔍 Ver detalhes</a>
+
+                    <!-- Botões Editar e Excluir -->
+                    <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a href="editar.php?id=<?php echo (int) $projeto['id']; ?>" class="btn-secundario">✏️ Editar</a>
+                        <a href="excluir.php?id=<?php echo (int) $projeto['id']; ?>" class="btn-perigo">🗑️ Excluir</a>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
