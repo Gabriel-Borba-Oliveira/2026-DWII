@@ -57,8 +57,6 @@ include __DIR__ . '/includes/cabecalho.php';
       Olá, eu sou <?php echo htmlspecialchars($nome); ?>! 👋
     </h2>
 
-    <?php
-    ?>
     <p><?php echo htmlspecialchars($descricao); ?></p>
 
     <div class="info-cards">
