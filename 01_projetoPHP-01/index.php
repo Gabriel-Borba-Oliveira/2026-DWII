@@ -51,6 +51,24 @@ PRG.",
         "cor"       => "#3ba34a",
         "conceitos" => '$_POST, validação, htmlspecialchars(), header() + exit' 
     ],
+    [
+        "numero"    => "05",
+        "nome"      => "Catálogo de Tecnologias",
+        "descricao" => "Listagem de tecnologias usando PHP e banco de dados MariaDB",
+        "link"      => "03_pdo/index.php",
+        "icone"     => "",
+        "cor"       => "#8e44ad",
+        "conceitos" => 'PDO, consultas SQL, redirecionamento'  
+    ],
+     [
+        "numero"    => "06",
+        "nome"      => "Área Restrita com Sessões",
+        "descricao" => "Sistema de autenticação com login, páginas públicas e restritas, proteção contra força bruta e flash messages.",
+        "link"      => "04_sessoes/publico.php",
+        "icone"     => "",
+        "cor"       => "#e67e22",
+        "conceitos" => "Sessões, autenticação, redirecionamento, flash messages, força bruta, auth.php",
+    ],
 ];
 ?>
 <!DOCTYPE html>
@@ -88,8 +106,7 @@ PRG.",
                 Suba o servidor PHP na <strong>raiz</strong> para acessar todas as aulas:
             </p>
             <div style="background: #010000; color: #a8e6a3; padding: 10px 16px;
-                        border-radius: 6px; margin-top: 10px; font-family: 'Courier
-New', monospace;
+                        border-radius: 6px; margin-top: 10px; font-family: 'Courier New', monospace;
                         font-size: 13px; line-height: 1.8;">
              cd ~/workspaces/2026-DWII<br>php -S localhost:8000
             </div>

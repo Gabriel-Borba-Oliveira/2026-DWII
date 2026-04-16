@@ -179,3 +179,120 @@ header {
 .btn:hover {
     background: #2a4080;
 }
+
+/* ── Página de confirmação ──────────────────────────────── */
+.confirmacao { text-align: center; margin-top: 60px; }
+.confirmacao-icone { font-size: 60px; margin: 0; }
+.confirmacao-titulo { color: #3ba34a; margin: 16px 0 8px; }
+.confirmacao-texto { font-size: 16px; color: #374151; margin-bottom: 24px; }
+
+.erro-item {
+    margin: 4px 0;
+}
+
+
+
+/* Estilo do 01_php-intro/index.php */
+
+.hero {
+    background: linear-gradient(135deg, #3b579d, #2a4080);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+.container, .msg, .link, .projetos {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    border: 1px solid #e8e8e8;
+    border-radius: 15px;
+    background-color: #e8e8e8;
+}
+.link {
+    padding-bottom: 20px;
+}
+.projetos {
+    padding-bottom: 20px;
+}
+
+/* Estilo do 01_php-intro/sobre.php */
+
+.sobre {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px 20px;
+    border: 1px solid #e8e8e8;
+    border-radius: 15px;
+    background-color: #e8e8e8;
+}
+.sobre h1 {
+    color: #3b579d;
+}
+.sobre a {
+    color: #3b579d;
+    font-weight: bold;
+    text-decoration: none;
+}
+.sobre a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo do projetos.php */
+
+.projetos {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px 20px;
+    border-radius: 15px;
+    background-color: #e8e8e8;
+}
+.projetos h1 {
+    color: #3b579d;
+}
+.projetos a {
+    color: #3b579d;
+    font-weight: bold;
+    text-decoration: none;
+}
+.projetos a:hover {
+    text-decoration: underline;
+}
+
+
+/* Aula 07 */
+
+.btn-primario {
+    display: inline-block;
+    background: #3b579d;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-primario:hover {
+    background: #2a4080;
+}
+.btn-secundario {
+    display: inline-block;
+    background: #e8edf5;
+    color: #3b579d;
+    padding: 4px 12px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn-secundario:hover {
+    background: #d0dbea;
+}

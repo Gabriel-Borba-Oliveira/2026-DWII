@@ -26,7 +26,7 @@ function requer_login(): void
     }
 
     if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
+        header('Location: /04_sessoes/login.php');
         exit;
     }
 }

@@ -33,9 +33,13 @@ function menu_class($item, $atual) {
 
 <!-- nav usa a classe CSS definida em style.css - sem style inline -->
  <nav>
-  <!-- Links para o portfólio - Aula 03 -->
    <a href="<?php echo $caminho_raiz; ?>01_php-intro/index.php"
     <?php echo menu_class("inicio", $pagina_atual); ?>>
+    🏠 Inicio
+  </a>
+  <!-- Links para o portfólio - Aula 03 -->
+   <a href="<?php echo $caminho_raiz; ?>01_php-intro/sobre.php"
+    <?php echo menu_class("sobre", $pagina_atual); ?>>
     👤 Sobre
   </a>
   <a href="<?php echo $caminho_raiz; ?>01_php-intro/projetos.php"
@@ -47,5 +51,16 @@ function menu_class($item, $atual) {
 <a href="<?php echo $caminho_raiz; ?>02_formularios/contato.php"
     <?php echo menu_class("contato", $pagina_atual); ?>>
     📬 Contato
+  </a>
+
+<!-- Link para o catálogo - Aula 05 -->
+<a href="<?php echo $caminho_raiz; ?>03_pdo/index.php"
+    <?php echo menu_class("catalogo", $pagina_atual); ?>>
+    🗄️ Catálogo
+  </a>
+
+  <a href="<?php echo $caminho_raiz; ?>04_sessoes/publico.php"
+    <?php echo menu_class("login", $pagina_atual); ?>>
+    📋 Login
   </a>
 </nav>
