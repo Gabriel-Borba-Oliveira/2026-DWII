@@ -37,6 +37,9 @@ if (!$tec) {
 
 $titulo_pagina = htmlspecialchars($tec['nome']) . " - Catálogo";
 $pagina_atual = "catalogo";
+
+
+include 'includes/cab_pdo.php';
 ?>
 
 <!DOCTYPE html>

@@ -36,6 +36,9 @@ $tecnologias = $stmt->fetchAll();
 
 $stmtCat = $pdo->query('SELECT DISTINCT categoria FROM tecnologias ORDER BY categoria');
 $categorias = $stmtCat->fetchAll();
+
+
+include 'includes/cab_pdo.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

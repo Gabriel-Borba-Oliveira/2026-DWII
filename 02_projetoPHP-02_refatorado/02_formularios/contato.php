@@ -67,6 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //  ou '' se a chave não existir (ex: primeira visita, sem envio)
 $nome_visitante = $_POST['nome_visitante'] ?? '';
 $mensagem = $_POST['mensagem'] ?? '';
+
+include '../includes/cabecalho.php';
 ?>
 <!--
     cabecalho.php gera tudo até <body> - incluindo:
@@ -74,7 +76,7 @@ $mensagem = $_POST['mensagem'] ?? '';
         href="../includes/style.css">, </head>, <body>, <header>, <nav>
     Por isso não repetimos essas tags aqui.
 -->
-<?php include '../includes/cabecalho.php'; ?>
+
 
     <div class="container">
         <h1 class="titulo-secao">📮 Formulário de Contato</h1>
