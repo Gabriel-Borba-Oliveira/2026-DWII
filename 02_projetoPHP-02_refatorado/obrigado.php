@@ -12,17 +12,20 @@
  * Recebe o nome via GET apenas para exibição amigável.
  * Nenhum dado de formulário e processado aqui.
  */
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $nome = "Gabriel Borba de Oliveira";
 $pagina_atual = "contato";
-$caminho_raiz = "../";
-$titulo_pagina = "Obrigado!";
+$caminho_raiz = "./";
+$titulo_pagina = "Mensagem Enviada - Obrigado!";
 
 
 $nome_visitante = htmlspecialchars($_GET['nome'] ?? 'visitante');
 ?>
 
-<?php include '../includes/cabecalho.php'; ?>
+<?php include './includes/cabecalho.php'; ?>
 
     <div class="container confirmacao">
         <p class="confirmacao-icone">✅</p>
@@ -35,4 +38,4 @@ $nome_visitante = htmlspecialchars($_GET['nome'] ?? 'visitante');
         <a href="contato.php" class="btn"> Enviar outra mensagem</a>
     </div>
 
-<?php include '../includes/rodape.php'; ?>
+<?php include './includes/rodape.php'; ?>

@@ -21,10 +21,6 @@
  *                            02_formularios/ (um nível acima)
  */
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 
 // isset() verifica se a variável foi definida antes de usá-la.
 // Valor padrão ativa caso a página esqueça de declarar $titulo_pagina.

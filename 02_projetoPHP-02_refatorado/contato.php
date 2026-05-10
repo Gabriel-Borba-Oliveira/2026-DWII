@@ -1,24 +1,25 @@
 <?php
 /**
- * 
- * ARQUIVO : 02_formularios/contato.php
- * Disciplina : Desenvolvimento Web II (2026-DWII)
- * Aula : 04 - PHP para Web: Formulários, GET e POST
- * Autor : Gabriel Borba de Oliveira
- * Conceitos : formulários HTML, method GET, $_GET, htmlspecialchars()
- * 
- * 
- * Página de contato - primeira versão com GET
- * cabecalho.php gera o <head> completo (incluindo o <link>
- * para style.css) e o <body> até o <main>. 
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : contato.php (migrado de 02_formularios/contato.php)
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 29/04/2026
+ * Descrição  : PRG - Post/Redirect/Get
+ * ════════════════════════════════════════════════════════════
  */
 
 // --- VARIÁVEIS DO TEMPLATE ---
 // Definidas ANTES do include - cabecalho.php as usa para
 // montar o <title>, o <link> do CSS e o item ativo no menu.
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $nome = "Gabriel Borba de Oliveira";
 $pagina_atual = "contato";
-$caminho_raiz = "../";
+$caminho_raiz = "./";
 $titulo_pagina = "Contato";
 
 
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($mensagem)) {
         $erros[] = 'O campo Mensagem é obrigatório.';
     } elseif (strlen($mensagem) < 10) {
-        $erros[] = 'A mensagem deve ter pelo menos 10.';
+        $erros[] = 'A mensagem deve ter pelo menos 10 caracteres.';
     } elseif (strlen($mensagem) > 500) {
         $erros[] = 'A mensagem não pode ultrapassar 500 caracteres.';
     }
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $nome_visitante = $_POST['nome_visitante'] ?? '';
 $mensagem = $_POST['mensagem'] ?? '';
 
-include '../includes/cabecalho.php';
+include './includes/cabecalho.php';
 ?>
 <!--
     cabecalho.php gera tudo até <body> - incluindo:
@@ -115,4 +116,4 @@ include '../includes/cabecalho.php';
 <?php endif; ?>
     </div>
 
-<?php include '../includes/rodape.php'; ?>
+<?php include './includes/rodape.php'; ?>
