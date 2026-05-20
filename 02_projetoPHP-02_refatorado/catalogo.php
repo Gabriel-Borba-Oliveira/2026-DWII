@@ -1,4 +1,14 @@
 <?php
+/**
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : catalogo.php 
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 07/05/2026
+ * Descrição  : Catálogo de Tecnologias
+ * ════════════════════════════════════════════════════════════
+ */
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 $titulo_pagina = "Catálogo de Tecnologias | Portfólio DWII";

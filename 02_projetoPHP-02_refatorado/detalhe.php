@@ -1,14 +1,15 @@
 <?php
 
-/*
-
- ARQUIVO : 03_pdo/detalhe.php
- Disciplina : Desenvolvimento Web II (2026-DWII)
- Aula : 05 - PHP + MariaDB: persistência de dados via PDO
- Autor : Gabriel Borba de Oliveira
- Conceitos : catálogo com PDO e MariaDB, htmlspecialchars()
-
-*/
+/**
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : detalhe.php 
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 07/05/2026
+ * Descrição  : Detalhes do catálogo de tecnologias
+ * ════════════════════════════════════════════════════════════
+ */
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 $pagina_atual = 'catalogo';

@@ -1,16 +1,15 @@
 <?php
 /**
- * 
- * ARQUIVO : 02_formularios/obrigado.php
- * Disciplina : Desenvolvimento Web II (2026-DWII)
- * Aula : 04 - PHP para Web: formulaários, GET e POST
- * Autor : Gabriel Borba de Oliveira
- * Conceitos : header() + exit (PRG), $_GET para parâmetros de confirmação, htmlspecialchars()
- * 
- * 
- * Página de confirmação - destino do redirecionamento PRG
- * Recebe o nome via GET apenas para exibição amigável.
- * Nenhum dado de formulário e processado aqui.
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : obrigado.php
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 29/05/2026
+ * Descrição  : Página de confirmação - destino do redirecionamento PRG
+ *              Recebe o nome via GET apenas para exibição amigável.
+ *              Nenhum dado de formulário e processado aqui.
+ * ════════════════════════════════════════════════════════════
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : logout.php 
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 29/05/2026
+ * Descrição  : Logout
+ * ════════════════════════════════════════════════════════════
+ */
 require_once __DIR__ . '/includes/auth.php';
 
 $_SESSION = [];

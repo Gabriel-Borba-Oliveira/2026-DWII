@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : includes/conexao.php.php
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 29/05/2026
+ * Descrição  : Conectar o banco
+ * ════════════════════════════════════════════════════════════
+ */
 function conectar(): PDO
 {
 

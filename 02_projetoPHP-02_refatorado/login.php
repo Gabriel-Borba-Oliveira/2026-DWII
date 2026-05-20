@@ -1,4 +1,14 @@
 <?php
+/**
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : login.php 
+ * Autor      : Gabriel Borba de Oliveira
+ * Data       : 29/04/2026
+ * Descrição  : Login
+ * ════════════════════════════════════════════════════════════
+ */
 
 require_once __DIR__ . '/includes/conexao.php';
 require_once __DIR__ . '/includes/auth.php';
