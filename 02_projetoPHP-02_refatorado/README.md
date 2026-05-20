@@ -11,7 +11,7 @@ Este projeto é o resultado das aulas de Desenvolvimento Web II. Ele apresenta u
 
 ```
 cd ~/workspaces/2026-DWII/02_projetoPHP-02_reafatorado/index.php
-php -S localhost:8080
+php -S localhost:8090
 ```
 
 ## Estrutura de arquivos
@@ -79,7 +79,7 @@ php -S localhost:8080
 
 ## Autor
 
-Gabriel Borba de Oliveira
+Gabriel Borba
 Curso: Técnico em Informática - IFPR
 Disciplina: Desenvolvimento Web II
 Ano: 2026
